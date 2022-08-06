@@ -4,9 +4,10 @@ public class Main {
 	public static void main(String[] args) {
 
 		Scanner mainScanner = new Scanner(System.in);
+		//mainScanner is passed to all of the functions that require a Scanner; it is the only scanner object in JBible
 		Bible bible = new Bible();
 
-		VerseOfTheDay v = new VerseOfTheDay();
+		VerseOfTheDay v = new VerseOfTheDay(mainScanner);
 
 		System.out.println(v.getRandomVerse(mainScanner));
 		Tools tools = new Tools();
