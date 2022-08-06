@@ -5,14 +5,14 @@ public class Main {
 
 		Scanner mainScanner = new Scanner(System.in);
 		Bible bible = new Bible();
-System.out.println(bible.books[18]);
+
 		VerseOfTheDay v = new VerseOfTheDay();
 
 		System.out.println(v.getRandomVerse(mainScanner));
 		Tools tools = new Tools();
 
 
-		System.out.println("Welcome to Java Bible!\ntype in a command to begin...");
+		System.out.println("Welcome to Java Bible!\ntype in a command (for example, help) to begin...");
 
 		while (true) {
 			System.out.println("enter command\n-->");
@@ -22,7 +22,7 @@ System.out.println(bible.books[18]);
 			String command = mainScanner.nextLine().toLowerCase().trim();
 
 			if (command.equals("help")) {
-				System.out.println("commands possible are:\n1. exit\n2. bible");
+				System.out.println("commands possible are:\n1. exit\n2. bible\n3. random\n4.<book> <chapter> <verse>\n5. list");
 			} else if (command.equals("random")) {
 
 				System.out.println(v.getRandomVerse(mainScanner));
