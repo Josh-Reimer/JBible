@@ -8,8 +8,6 @@ public class Main {
 		Bible bible = new Bible();
 
 		VerseOfTheDay v = new VerseOfTheDay(mainScanner);
-
-		System.out.println(v.getRandomVerse(mainScanner));
 		Tools tools = new Tools();
 
 
