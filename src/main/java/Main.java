@@ -8,9 +8,11 @@ public class Main {
 		Bible bible = new Bible();
 
 		VerseOfTheDay v = new VerseOfTheDay(mainScanner);
+		System.out.println("\n");
 		Tools tools = new Tools();
-
-
+Verse start = new Verse("genesis.txt",45,1);
+Verse stop = new Verse("exodus.txt",3,3);
+String range = bible.getRange(mainScanner,start,stop);System.out.println(range);
 		System.out.println("Welcome to Java Bible!\ntype in a command (for example, help) to begin...");
 
 		while (true) {

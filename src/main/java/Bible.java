@@ -115,4 +115,63 @@ public class Bible {
 		return 0;
 	}
 
+	public String getRange(Scanner sc, Verse firstRef, Verse secondRef) {
+		int firstChapNum = firstRef.chapter;
+		int firstVerseNum = firstRef.verse;
+		int secondChapNum = secondRef.chapter;
+		int secondVerseNum = secondRef.verse;
+		String range = "";
+		try {
+			boolean inRange = false;
+			int count = 0;
+			for (String book : books) {
+				count = count + 1;
+				if(!inRange){
+				if (!firstRef.book.equals(book)) {
+					continue;
+				}
+				}
+				File file = new File(pathToBible + book);
+				sc = new Scanner(file);
+
+				while (sc.hasNextLine()) {
+					String l = sc.nextLine();
+					if (!l.contains(":")) {
+						continue;
+					}
+
+					int versenum = Integer.parseInt(l.split(":")[1]);
+					int chapnum = Integer.parseInt(l.split(":")[0]);
+
+					if (firstRef.book.equals(book)) {
+						if (firstChapNum == chapnum) {
+							if (firstVerseNum == versenum) {
+								inRange = true;
+
+							}
+						}
+					}
+
+					if (inRange) {
+						range = range + l + "\n";
+					}
+					if (secondRef.book.equals(book)) {
+						if (chapnum == secondChapNum) {
+							if (versenum == secondVerseNum) {
+inRange = false;
+								break;
+							}
+						}
+					}
+				}
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("the required files could not be loaded");
+		}
+		return range;
+	}
+
+
+
+
 }
