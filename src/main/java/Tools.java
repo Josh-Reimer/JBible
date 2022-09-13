@@ -10,10 +10,11 @@ public class Tools {
 	}
 
 	public boolean isBook(String s) {
-		s = s.toLowerCase().trim();
+		s = s.toLowerCase().trim().replace(" ", "_") + ".txt";
+		//System.out.println("+<" + s + ">+");
 		Bible bible = new Bible();
 		for (String book : bible.books) {
-			if (s.equals(book.replace(".txt", ""))) {
+			if (s.equals(book)) {
 				return true;
 			}
 		}
@@ -35,6 +36,10 @@ public class Tools {
 
 	public boolean isBookChapter(String s) {
 		String str = s.toLowerCase().trim();
+		//System.out.println("-<" + str + ">-");
+		if (str.contains("song of solomon")) {
+			str = "song_of_solomon" + str.split("song of solomon")[1];
+		}
 		boolean containsbook = false;
 		boolean containsdigit = false;
 		boolean containsspace = false;
@@ -45,7 +50,9 @@ public class Tools {
 		for (String b : bible.books) {
 			if (str.contains(b.replace(".txt", ""))) {
 				containsbook = true;
+				//System.out.println("contains book");
 			} else {
+
 				if (isSpaceBook(str)) {
 
 					containsbook = true;
@@ -78,8 +85,12 @@ public class Tools {
 	}
 
 	public boolean isBookChapterVerse(String str) {
-
-
+		//System.out.println("$<"+str+"$>");
+		
+		if (str.contains("song of solomon")) {
+			str = "song_of_solomon" + str.split("song of solomon")[1];
+		}
+//System.out.println("$<"+str+"$>");
 		Bible bible = new Bible();
 		boolean isAligned = false;
 		boolean containsbook = false;

@@ -8,12 +8,11 @@ public class Main {
 		Bible bible = new Bible();
 
 		VerseOfTheDay v = new VerseOfTheDay(mainScanner);
-		System.out.println("\n");
+
 		Tools tools = new Tools();
-Verse start = new Verse("genesis.txt",45,1);
-Verse stop = new Verse("exodus.txt",3,3);
-String range = bible.getRange(mainScanner,start,stop);System.out.println(range);
-		System.out.println("Welcome to Java Bible!\ntype in a command (for example, help) to begin...");
+
+
+		System.out.println("\nWelcome to Java Bible!\ntype in a command (for example, help) to begin...");
 
 		while (true) {
 			System.out.println("enter command\n-->");
@@ -36,21 +35,27 @@ String range = bible.getRange(mainScanner,start,stop);System.out.println(range);
 			} else if (command.equals("bible")) {
 				bible.getBible(mainScanner);
 
-			} else if (tools.isBook(command.replace(" ", "_"))) {
+			} else if (tools.isBook(command)) {
 
 				System.out.println(bible.getBook(mainScanner, command.replace(" ", "_") + ".txt"));
-
+				//System.out.println("is book");
 			} else if (tools.isBookChapter(command)) {
-
+				//System.out.println("is book chapter");
+				if (command.contains("song of solomon")) {
+					command = "song_of_solomon" + command.split("song of solomon")[1];
+				}
 				if (tools.isSpaceBook(command)) {
-					command = tools.replaceFirstSpace(command);
-					System.out.println("is space book");
+					//System.out.println("is space book");
 				}
 				requestedBook = command.split(" ")[0] + ".txt";
 				requestedChapter = Integer.parseInt(command.split(" ")[1].trim());
 				System.out.println(bible.getChapter(mainScanner, requestedBook, requestedChapter));
 
 			} else if (tools.isBookChapterVerse(command)) {
+				if (command.contains("song of solomon")) {
+					command = "song_of_solomon" + command.split("song of solomon")[1];
+				}
+				//System.out.println("is book chapter verse");
 				if (tools.isSpaceBook(command)) {
 					command = tools.replaceFirstSpace(command);
 				}
