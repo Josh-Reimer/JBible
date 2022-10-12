@@ -126,10 +126,10 @@ public class Bible {
 			int count = 0;
 			for (String book : books) {
 				count = count + 1;
-				if(!inRange){
-				if (!firstRef.book.equals(book)) {
-					continue;
-				}
+				if (!inRange) {
+					if (!firstRef.book.equals(book)) {
+						continue;
+					}
 				}
 				File file = new File(pathToBible + book);
 				sc = new Scanner(file);
@@ -158,7 +158,7 @@ public class Bible {
 					if (secondRef.book.equals(book)) {
 						if (chapnum == secondChapNum) {
 							if (versenum == secondVerseNum) {
-inRange = false;
+								inRange = false;
 								break;
 							}
 						}
@@ -172,24 +172,25 @@ inRange = false;
 	}
 
 
-public String search(Scanner sc, String searchterm){
+	public String search(Scanner sc, String searchterm) {
 		//try to make a really fast search algorithm and then try that in an android app to see how fast it is in an apk
 		String result = "";
-		try{
-		for(String book : books){
-			  File file = new File(pathToBible+book);
-			  sc = new Scanner(file);
-		    while(sc.hasNextLine()){
-		        String line = sc.nextLine();
-		        if(line.contains(searchterm)){
-		            result = result + line;
-		          }
-		      }
+		try {
+			for (String book : books) {
+				String bookForResult = book.replace(".txt","").toUpperCase();
+				File file = new File(pathToBible + book);
+				sc = new Scanner(file);
+				while (sc.hasNextLine()) {
+					String line = sc.nextLine();
+					if (line.contains(searchterm)) {
+						result = result + bookForResult +"\n" + line+"\n";
+					}
+				}
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("file not found");
 		}
-		}catch(FileNotFoundException e){
-		    System.out.println("file not found");
-		  }
 		return result;
-}
+	}
 
 }

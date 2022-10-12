@@ -26,6 +26,16 @@ public class Main {
 			} else if (command.equals("random")) {
 
 				System.out.println(v.getRandomVerse(mainScanner));
+			} else if(command.contains("search")){
+			  if(command.equals("search")){
+			    System.out.println("please specify a search term");
+			    continue;
+			 } else {
+			    String wordToSearch = command.split(" ")[1];
+			    String searchResult = bible.search(mainScanner,wordToSearch);
+			    System.out.println(searchResult);
+			 }
+			  
 			} else if (command.equals("list")) {
 				bible.listbooks();
 			} else if (command.equals("exit")) {
