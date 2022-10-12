@@ -172,6 +172,24 @@ inRange = false;
 	}
 
 
-
+public String search(Scanner sc, String searchterm){
+		//try to make a really fast search algorithm and then try that in an android app to see how fast it is in an apk
+		String result = "";
+		try{
+		for(String book : books){
+			  File file = new File(pathToBible+book);
+			  sc = new Scanner(file);
+		    while(sc.hasNextLine()){
+		        String line = sc.nextLine();
+		        if(line.contains(searchterm)){
+		            result = result + line;
+		          }
+		      }
+		}
+		}catch(FileNotFoundException e){
+		    System.out.println("file not found");
+		  }
+		return result;
+}
 
 }
