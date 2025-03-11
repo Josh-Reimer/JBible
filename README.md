@@ -11,5 +11,7 @@ in a folder called Bible(think of it as assets).
 Note:
        You may have to delete the class files
 and run javac on them again if errors occur.
-Also, the way JBible accesses the Bible 
-text files isn't very professional and the file path is wrong.
+
+Some of this code is being used in Bible-Verse https://joshreimer.ca/verse-app-story/
+https://github.com/Josh-Reimer/Bible-Verse,
+another one of my projects(an android app)
