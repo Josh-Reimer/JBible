@@ -6,12 +6,18 @@ called <a href="https://play.google.com/store/apps/details?id=ru.iiec.jvdroid&hl
 there is a jar file which you can run the
 entire app.I have all the java source code 
 in the src folder and the Bible text files
-in a folder called Bible(think of it as assets).
+in a folder called bible.
 
-Note:
-       You may have to delete the class files
-and run javac on them again if errors occur.
+# How to Run
+```
+git clone https://github.com/Josh-Reimer/JBible.git
+cd JBible
+mvn clean package
+java -jar target/JBible*
+```
 
 Some of this code is being used in Bible-Verse https://joshreimer.ca/verse-app-story/
 https://github.com/Josh-Reimer/Bible-Verse,
-another one of my projects(an android app)
+another one of my projects (an android app)
+![jbible-terminal](https://github.com/user-attachments/assets/226476d3-08a5-4abf-b03d-ea0d81391c49)
+![jbible-terminal-book](https://github.com/user-attachments/assets/d8a342ed-10db-41d8-b363-3b2490808a76)
